@@ -9,11 +9,13 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <input type="number" name="numero" id="num" placeholder="Insira um numero">
+    <input type="number" name="numero" class="num" id="num" placeholder="Insira um numero">
     <button type="submit" value="enviar" onclick="adiciona()" class="enviar">inserir</button>
-    <button type="submit" value="enviar" onclick="adiciona()" class="enviar">2</button>
-    <button type="submit" value="enviar" onclick="adiciona()" class="enviar">3</button>
-    
-    
+    <button type="submit" value="enviar" onclick="tirar()" class="enviar">2</button>
+    <button type="submit" value="enviar" onclick="sla()" class="enviar">3</button>
+    <br>
+    <div class="num">
+        <p id="resposta"></p>
+    </div>
 </body>
 </html>

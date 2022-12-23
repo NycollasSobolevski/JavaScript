@@ -68,7 +68,7 @@ function EXC01() {
     // console.log(b)
 
     // PT 03
-    var c = a.map((value,index,array) => array[index]*array[index])
+    var c = a.map((value,index,array) => array[index]**2)
     // console.log(c)
 
     // PT 04

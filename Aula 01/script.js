@@ -31,3 +31,7 @@ function sla() {
     }
     return a;
 }
+
+function Resposta() {
+    const Resposta = document.getElementById('resposta')
+}

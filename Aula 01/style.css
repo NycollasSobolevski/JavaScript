@@ -1,9 +1,9 @@
 body{
-    align-items: center;
+    /* align-items: center;
     display: flex;
-    justify-content: center;
+    justify-content: center; */
 }
-#num{
+.num{
     background-color: black;
     color: aliceblue;
     height: 40px;
