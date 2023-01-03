@@ -1,3 +1,40 @@
+@keyframes movement{
+    0%   {background-color:red; left:0px; top:0px;}
+    25%  {background-color:yellow; left:200px; top:0px;}
+    50%  {background-color:blue; left:200px; top:200px;}
+    75%  {background-color:green; left:0px; top:200px;}
+    100% {background-color:red; left:0px; top:0px;}
+}
+
+
 body{
-    background-color: aquamarine;
+    background-color: rgb(0, 0, 0);
+    animation-name: movement;
+    animation-duration: 270s;
+    animation-iteration-count: infinite;
+}
+
+
+.ConferBox{
+    text-align: center;
+    max-width: 200px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(240, 248, 255);
+}
+.TextBox{
+    height: 15px;
+    text-align: center;
+    color: aliceblue;
+    border-radius: 15px;
+    background-color: rgb(60, 60, 60);
+}
+.conferir{
+    height: 25px;
+    border-radius: 10px;
+    border: 0px;
+}
+.conferir ::hover{
+    background-color: rgb(141, 141, 141);
 }
