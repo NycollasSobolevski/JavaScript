@@ -1,6 +1,7 @@
 body{
     margin: 0px;
-    background-color: rgb(0, 126, 175);
+    /* background-color: rgb(0, 126, 175); */
+    background: linear-gradient(45deg, rgba(131,96,195,1) 0%, rgba(102,125,182,1) 50%, rgba(46,191,145,1) 100%);
     display: flex;  
     justify-content: center;
     height:100vh ;
@@ -16,9 +17,7 @@ tr{
     width: 40%;
     height: 500px;
     margin: auto;
-    background: linear-gradient(45deg, rgba(131,96,195,1) 0%, rgba(102,125,182,1) 50%, rgba(46,191,145,1) 100%);
     border-radius: 10px;
-
 }
 h1{
     /* padding-top: 55px; */
@@ -27,6 +26,7 @@ h1{
 .calculadora{
     text-align: center;
     width: 75%;
+    height: 500px;
     margin: auto;
     background-color: rgb(150, 150, 150, 0.3);
     border-radius: 10px;
