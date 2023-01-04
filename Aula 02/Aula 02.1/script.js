@@ -1,132 +1,27 @@
-// function Produto(nome, preco, estoque) {
-//     this.nome = nome;
-//     this.preco = preco;
-//     this.estoque = estoque;
-// }
-// const p1 = new Produto("Camiseta", 20, 3);
-// console.log(p1.estoque);
-// p1.estoque = 500;
-// console.log(p1.estoque);
-
-
-
-// function Produto(nome, preco, estoque) {
-//     this.nome = nome;
-//     this.preco = preco;
-//     Object.defineProperty(this, 'estoque', {
-//         enumerable: false, // Define se a chave pode ser mostrada junto das outras chaves
-//         value: estoque, // Define o valor da chave
-//     });
-// }
-// const p1 = new Produto("Camiseta", 20, 3);
-
-// console.log(Object.keys(p1));
-
-
-
-
-// ----------------------------------   //usando defineProperties   -------------------------------------
-// function Produto(nome, preco, estoque) {
-//     Object.defineProperties(this, {
-//         nome: {
-//             enumerable: true,
-//             value: nome,
-//             writable: false,
-//             configurable: false
-//         },
-//         preco: {
-//             enumerable: true,
-//             value: preco,
-//             writable: true,
-//             configurable: false
-//         },
-//         estoque: {
-//             enumerable: true,
-//             value: estoque,
-//             writable: true,
-//             configurable: false
-//         }
-//     });
-// }
-
-// const p1 = new Produto("Camiseta", 20, 3);
-// const p2 = new Produto("Blusinha", 59.90, 30);
-
-// console.log(p1);
-// console.log(p2);
-
-
-// ----------------------------------   //usando get/setter   -------------------------------------
-
-
-// function Produto(nome, preco, estoque) {
-//     this.nome = nome;
-//     this.preco = preco;
-//     Object.defineProperty(this, 'estoque', {
-//         enumerable: true,
-//         configurable: false,
-//         get: () => {
-//             return estoque
-//         },
-//         set: (valor) => {
-//             if (typeof (valor) !== 'number') {
-//                 throw new TypeError("Valor inválido");
-//             }
-//             estoque = valor;
-//         }
-//     });
-// }
-
-
-// const p1 = new Produto("Camiseta", 20, 3);
-
-// console.log(p1.estoque);
-// p1.estoque = 500;
-// console.log(p1.estoque);
-// p1.estoque = "Não_é_número"; // quando se e diferente de algum numero ele estora um erro propositalmente
-
-
-// ----------------------------------   //usando object.assign()   -------------------------------------
-
-
-// console.log("\n\n");
-// const produto = { nome: "Produto", preco: 1.8 };
-// const caneca = Object.assign({}, produto);
-
-// caneca.nome = "Caneca";
-
-// produto.preco = 10;
-// console.log(produto);
-// console.log(caneca);
-
-
-// ----------------------------------   //usando Object.getOwnPropertyDescriptor( )   -------------------------------------
-
-// const produto = { nome: "Produto", preco: 1.8 };
-
-// console.log(produto);
-// console.log(Object.getOwnPropertyDescriptor(produto, 'nome'));
-
-
-
-// --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// ----------------------------------   //usando Object.entries( )   -------------------------------------
-
-// const produto = { nome: "Produto", preco: 1.8 };
-
-// console.log(produto);
-// for (let [chave, valor] of Object.entries(produto)) {
-// console.log(chave, valor);
-// }
-
-
 // Validando CPF
 
-function ValidaCpf() {
-    var cpf =  document.getElementById("cpf").value;
-    isSequence = true
+
+function adicionaPontos() { // Adicionando a pontuacao correta de CPF
+    var cpf = document.getElementById("cpf").value
     cpf = Array.from(cpf.replace(/\D+/g, ""))
     
+    cpf.length >= 3  ? cpf.splice(3,0,'.') : null
+    cpf.length >= 6  ? cpf.splice(7,0,'.') : null
+    cpf.length >= 9  ? cpf.splice(11,0,'-') : null
+
+    cpf = String(cpf).replaceAll(",", "");
+    console.log(cpf);
+    (String(cpf.value).length == 11) ? cpf.value += "-" : null
+
+    document.getElementById("cpf").value = cpf
+}
+adicionaPontos()
+function ValidaCpf() {
+    var cpf =  document.getElementById("cpf").value;
+    console.log(cpf);
+    isSequence = true
+    cpf = Array.from(cpf.replace(/\D+/g, ""))
+    console.log(cpf);
     for (let i = 0; i < cpf.length; i++) {
         const atual = cpf[i];
         if(atual != cpf[i-1])
@@ -135,10 +30,10 @@ function ValidaCpf() {
             isSequence = true
     }
     if (isSequence == true) 
-        return false
+        document.getElementById("ResultadoCpf").innerHTML = 'CPF Invalido'
     
-    var FirstDigit = 0
-    var SecondDigit = 0
+    let FirstDigit = 0
+    let SecondDigit = 0
     let count = 10
 
 
@@ -165,25 +60,115 @@ function ValidaCpf() {
         SecondDigit = 0
     }
 
-
-    // ----------- teste -----------
-    console.log(cpf);
-    console.log(FirstDigit);
-    console.log(SecondDigit);
-    console.log('Sequencia' + isSequence);
-    
     if (FirstDigit != cpf[cpf.length - 2] || SecondDigit != cpf[cpf.length - 1])
+        document.getElementById("ResultadoCpf").innerHTML = 'CPF Invalido'
+    else if(cpf < 1 )
         document.getElementById("ResultadoCpf").innerHTML = 'CPF Invalido'
     else
         document.getElementById("ResultadoCpf").innerHTML = 'CPF Valido'
 }
 
-if (ValidaCpf(cpf) == false) {
-    console.log('falso');
+function cpf(cpf) {
+    isSequence = true
+    cpf = Array.from(cpf.replace(/\D+/g, ""))
+    for (let i = 0; i < cpf.length; i++) {
+        const atual = cpf[i];
+        if(atual != cpf[i-1])
+            isSequence = false
+        else
+            isSequence = true
+    }
+    if (isSequence == true) 
+        return false
+    
+    var FirstDigit = 0
+    var SecondDigit = 0
+    let count = 10
+
+
+    cpf.forEach(element => {
+        if (count >= 2) {
+            FirstDigit += parseInt(element)*count
+            count--
+        }
+    });
+
+    FirstDigit = 11 - (FirstDigit % 11)
+    if (FirstDigit > 9)
+        FirstDigit = 0
+    count = 11
+    
+    cpf.forEach(element => {
+        if (count > 1) {
+            SecondDigit += parseInt(element)*count
+            count--
+        }
+    });
+    SecondDigit = 11 - (SecondDigit % 11)
+    if (SecondDigit > 9) {
+        SecondDigit = 0
+    }
+
+    if (FirstDigit != cpf[cpf.length - 2] || SecondDigit != cpf[cpf.length - 1])
+        return false
+    else if(cpf < 1 )
+        return false
+    
+    return true
 }
+// Gerando CPF
+function GerarCpf() {
+    let cpf = ''
+    for (let i = 0; i < 9; i++) 
+        cpf += Math.floor(Math.random() * 10)
+
+    let count = 10
+    cpf = Array.from(cpf)
+    let sum = 0
+    cpf.forEach(element => {
+        if (count >= 2) {
+            sum += parseInt(element)*count
+            count--
+        }
+    });
+    cpf.push(String(11 - (sum % 11)) <= 9 ? String(11 - (sum % 11)) : '0')
+    count = 11
+    sum = 0
+    cpf.forEach(element => {
+        if(count > 1){
+            sum += parseInt(element)*count
+            count--
+        }
+    });
+    cpf.push(String(11 - (sum % 11)) <= 9 ? String(11 - (sum % 11)) : '0')
+    document.getElementById("cpf").value = String(cpf).replace(/\D+/g, "")
+    console.log(cpf);
+    console.log(document.getElementById('cpf').value);
+}
+
+
+
+function mascara(o,f){
+    v_obj=o
+    v_fun=f
+    setTimeout("execmascara()",1)
+}
+function execmascara(){
+    v_obj.value=v_fun(v_obj.value)
+}
+
+function cpf(v){
+    v=v.replace(/\D/g,"")                    //Remove tudo o que não é dígito
+    v=v.replace(/(\d{3})(\d)/,"$1.$2")       //Coloca um ponto entre o terceiro e o quarto dígitos
+    v=v.replace(/(\d{3})(\d)/,"$1.$2")       //Coloca um ponto entre o terceiro e o quarto dígitos
+                                             //de novo (para o segundo bloco de números)
+    v=v.replace(/(\d{3})(\d{1,2})$/,"$1-$2") //Coloca um hífen entre o terceiro e o quarto dígitos
+    return v
+}
+
+
 // Pett = "12278522906"
 // ny = '133.036.559.36'
 // cpf = "705.484.450-52"
 // test = "111.111.111.11"
 // document.getElementById("resultadoCpf").innerHTML = 'helo'
-
