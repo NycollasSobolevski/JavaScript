@@ -14,7 +14,9 @@
     <header>
         <div class="headerContent">
             <a href="index.html">
-                <button><p>Voltar</p></button>
+                <button>
+                    <p>Voltar</p>
+                </button>
             </a>
         </div>
     </header>
@@ -23,9 +25,51 @@
             <h3>Insira o CPF</h3>
             <input type="text" name="cpf" id="cpf" maxlength="14" class="TextBox"
                 onkeyup="ValidaCpf();mascara(this, cpf)" placeholder="CPF">
-            <input type="button" value="Conferir" onclick="ValidaCpf();adicionaPontos()" class="conferir">
+            <!-- <input type="button" value="Conferir" onclick="ValidaCpf();adicionaPontos()" class="conferir"> -->
+            
+            <input type="button" value="sla" onclick="ConfereEstado()" class="conferir">
+            <p>Insira o estado do CPF a ser gerado</p>
+            <SELEct id="Estados" class="conferir">
+                <option value="1">Distrito Federal</option>
+                <option value="1">Goiás</option>
+                <option value="1">Mato Grosso do Sul</option>
+                <option value="1">Tocantins</option>
+
+                <option value="2">Acre</option>
+                <option value="2">Pará</option>
+                <option value="2">Amazonas</option>
+                <option value="2">Amapá</option>
+                <option value="2">Rondônia</option>
+                <option value="2">Roraima</option>
+
+                <option value="3">Ceará</option>
+                <option value="3">Maranhão</option>
+                <option value="3">Piauí</option>
+
+                <option value="4">Pernambuco</option>
+                <option value="4">Rio Grande do Norte</option>
+                <option value="4">Paraíba</option>
+                <option value="4">Alagoas</option>
+
+                <option value="5">Bahia</option>
+                <option value="5">Sergipe</option>
+
+                <option value="6">Minas Gerais</option>
+
+                <option value="7">Rio de Janeiro</option>
+                <option value="7">Espirito Santo</option>
+
+                <option value="8">Sao Paulo</option>
+
+                <option value="9" selected>Parana</option>
+                <option value="9" >Santa Catarina</option>
+                
+                <option value="0" >Rio Grande do Sul</option>
+            </SELEct>
             <input type="button" value="Gerar" onclick="GerarCpf();ValidaCpf();adicionaPontos()" class="conferir">
+            <input type="button" value="Conferir Estado" onclick="BuscaEstado()" class="conferir">
             <p id="ResultadoCpf"></p>
+            <p id="TextEstado">Estado: </p>
         </div>
     </div>
 </body>

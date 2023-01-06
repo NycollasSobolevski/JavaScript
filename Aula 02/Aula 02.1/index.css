@@ -1,0 +1,33 @@
+body {
+    background: linear-gradient(90deg, rgba(255, 75, 31, 1) 0%, rgba(2, 0, 36, 1) 50%, rgba(31, 221, 255, 1) 100%);
+    min-height: 100vh;
+}
+/* .conferir {
+    width: 70%;
+    height: 25px;
+    border-radius: 10px;
+    border: 0px;
+    margin: 2px;
+    transition: 250ms;
+    background-color: rgb(189, 189, 189);
+}
+
+.conferir:hover {
+    background-color: rgb(68, 68, 68);
+    color: aliceblue;
+    box-shadow: 0px 0px 4px black;
+    transition: 250ms;
+} */
+
+
+.Links {
+    height: 30px;
+    width: 150px;
+    border-radius: 15px;
+    align-items: center;
+    display: flex;
+    background-color: aqua;
+    text-decoration: none;
+    color: black;
+
+}
